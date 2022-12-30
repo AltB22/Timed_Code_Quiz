@@ -4,33 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
+    <!-- <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous"
-    />
+    /> -->
     <!-- <link rel="stylesheet" href="./Assets/reset.css" /> -->
     <link rel="stylesheet" href="./Assets/style.css" />
 
     <title>Coding Quiz Challenge</title>
 </head>
 <body>
+
     <div class="wrapper">
         <header>
-          <h1>Coding Quiz Challenge</h1>
+            <h1>Coding Quiz Challenge</h1>
         </header>
-        <div class="card">
+        <!-- <div class="card"> -->
+          <!-- <div class="card-header"> -->
+        <p>You must answer the following code-related quesitons within the time limit.  Please keep in mind that each incorrect answer will penalize your score/time by 10 seconds!</p>
+       
+    <div class="button-container">
+        <button id="button">Start Quiz</button>
+    </div>
+    </div>
+    <div class="wrapper">
+        <!-- <header> -->
+            <nav>
+                <ul>
+                    <li>
+                        <a class="high-score">View High Scores</a>
+                    </li>
+                    <!-- <li>
+                       <a class="white-space">___________________________________________________________________________</a>
+                    </li> -->
+                    <li>
+                        <a class="time">Time: <!--insert dynamic time here using day.js--></a>
+                    </li>
+                </ul>
+            </nav>
+          <h2>String values must be enclosed within________when being assigned to variables.</h2>
+        <!-- </header> -->
+    <!-- <div class="card">
           <div class="card-header">
-            <p>You must answer the following code-related quesitons within the time limit.  Please keep in mind that each incorrect answer will penalize your score/time by 10 seconds!</p>
-          </div>
-          <div class="button-container">
-            <button
-              id="button">Start Quiz</button>
-    
-            </button>
-          </div>
+    </div> -->
+        <div class="button-container">
+            <button id="button">1. Commas</button>
+            <button id="button">2. Curly Brackets</button>
+            <button id="button">3. Quotes</button>
+            <button id="button">4. Parenthesis</button>
         </div>
+    </div>
+    <div class="wrapper">
+        <!-- <header> -->
+          <h2>A very useful tool used during development and debugging for printing content to the debugger is:</h2>
+        <!-- </header> -->
+    <!-- <div class="card">
+          <div class="card-header">
+    </div> -->
+        <div class="button-container">
+            <button id="button">1. JavaScript</button>
+            <button id="button">2. Terminal/Bash</button>
+            <button id="button">3. For Loops</button>
+            <button id="button">4. Console.log</button>
+        </div>
+    </div>
+    
+        
 
 
     <script src="./Assets/script.js"></script>

@@ -1,0 +1,58 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header  {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bolder;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+#button {
+    border-radius: 10px;
+    background-color: lightsalmon;
+    display: block;
+    text-align: center;
+    /* box-shadow: 20px; */
+}
+
+/* Nav bar styling to make it read horizontally, over to the right, no bullet points for list */
+nav {
+    width: 100%;
+    display: inline-flex;
+    /* justify-content:  */
+}
+
+
+.high-score {
+    display: inline-flex;
+    justify-content: flex-start;
+ 
+}
+
+.button-container {
+    justify-content: center;
+    display: block;
+}
+
+/* .white-space {
+    color: white;
+} */
+
+.time{
+    display: inline-flex;
+    justify-content: flex-start;
+  
+}
+
+ul {
+    text-decoration: none;
+}
