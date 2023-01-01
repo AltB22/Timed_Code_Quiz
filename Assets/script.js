@@ -1,6 +1,3 @@
-// vars needed
-// var startBtn = document.getElementById('#start-button');
-
 let xQuestion = 0;
 let startBtn = document.getElementById("start-button");
 let quizStart = document.getElementById('quiz-start');
@@ -8,7 +5,7 @@ let startPageHeader = document.getElementById('start-page-header');
 // let answerBtn = $('.answer-buttons');
 // let question = $('.question');
 // answerBtn.val = false;
-// let x = 0;
+
 
 function startQuiz() {
         if (startBtn) {
@@ -59,13 +56,7 @@ function moveToQuestions() {
         listOfAnswers.append(answerBtn);
         questionContainerEl.append(questionText);
         questionContainerEl.append(listOfAnswers);
-       
     }
-  
-    
-   
-
-
 
     // for (let i = 0; i <= questionAnswerObjArr.length; i++) {
     // console.log(quizQuestionObj1.answers[2]);
