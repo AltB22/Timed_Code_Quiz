@@ -3,8 +3,10 @@
 
 let firstQuestion = 0;
 let startBtn =  $('#start-button');
-let quizStart =  $('#quiz-start')
-let startPageHeader = $('.start-page-header')
+let quizStart =  $('#quiz-start');
+let startPageHeader = $('.start-page-header');
+let answerBtn = $('.answer-buttons');
+// answerBtn.val = false;
 
 $(function startQuiz(){
     $('#start-button').on('click', function(){
@@ -47,12 +49,17 @@ function moveToQuestions(){
     startPageHeader.remove();
 
 for (let i = 0; i <= questionAnswerObjArr.length; i++) {
-console.log(quizQuestionObj1.answers[2])
+console.log(quizQuestionObj1.answers[2]);
 // let answers = [i];
 //Make the answer button .val equal to the answer
-if (quizQuestionObj1.answer !== quizQuestionObj1.answers[i]){
+if (answerBtn.index[i] == quizQuestionObj1.answer[i]){
+    $('.answer-feedback').textContent = 'Wrong';
     console.log(quizQuestionObj1.answer);
     console.log('Wrong!');
+}
+else {console.log('Right!');
+
+}
 
 }
 
@@ -60,6 +67,6 @@ if (quizQuestionObj1.answer !== quizQuestionObj1.answers[i]){
 // console.log(quizQuestions);
 //need a loop through the the questions array that returns each question/answer object as dynamically created p for quesiton and buttons in list for answers. Then moves to the next question/answer object when a selection is made.
 
-}
+
 
 // console.log(moveToQuestions);
