@@ -1,7 +1,10 @@
 // vars needed
 // var startBtn = document.getElementById('#start-button');
 
-
+let firstQuestion = 0;
+let startBtn =  $('#start-button');
+let quizStart =  $('#quiz-start')
+let startPageHeader = $('.start-page-header')
 
 $(function startQuiz(){
     $('#start-button').on('click', function(){
@@ -14,8 +17,8 @@ if ($('#start-button')){
 });
 
 
-
-let quizQuestions = [
+var questionAnswerObjArr = [
+    quizQuestionObj1 = 
     {
         question: 'String values must be enclosed within___________when being assigned to variables.',
         answers: [
@@ -25,6 +28,8 @@ let quizQuestions = [
             '4. Parentheses',],
             answer: 2,
     },
+
+    quizQuestionObj2 = 
     {
         question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
         answers: [
@@ -33,23 +38,27 @@ let quizQuestions = [
             '3. A For Loop',
             '4. Console.log()',],
             answer: 3,
-    }
+    },
 ]
 
 function moveToQuestions(){
+    startBtn.remove();
+    quizStart.remove();
+    startPageHeader.remove();
 
-for (let i = 0; i <= quizQuestions.length; i++) {
-// console.log(quizQuestions.length)
-let questionObj = [i];
-if (questionObj[i] == quizQuestions.answer){
-    console.log(quizQuestions);
+for (let i = 0; i <= questionAnswerObjArr.length; i++) {
+console.log(quizQuestionObj1.answers[2])
+// let answers = [i];
+//Make the answer button .val equal to the answer
+if (quizQuestionObj1.answer !== quizQuestionObj1.answers[i]){
+    console.log(quizQuestionObj1.answer);
+    console.log('Wrong!');
 
 }
 
 }
 // console.log(quizQuestions);
 //need a loop through the the questions array that returns each question/answer object as dynamically created p for quesiton and buttons in list for answers. Then moves to the next question/answer object when a selection is made.
-
 
 }
 
