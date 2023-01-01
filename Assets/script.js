@@ -42,7 +42,7 @@ for (let i = 0; i <= quizQuestions.length; i++) {
 // console.log(quizQuestions.length)
 let questionObj = [i];
 if (questionObj[i] == quizQuestions.answer){
-    console.log(JSON.stringify(quizQuestions));
+    console.log(quizQuestions);
 
 }
 

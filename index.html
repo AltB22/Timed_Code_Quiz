@@ -16,57 +16,31 @@
     <title>Coding Quiz Challenge</title>
 </head>
 <body>
-
-    <div class="wrapper">
-        <header>
-            <h1>Coding Quiz Challenge</h1>
-        </header>
-        <!-- <div class="card"> -->
-          <!-- <div class="card-header"> -->
-        <p>You must answer the following code-related quesitons within the time limit.  Please keep in mind that each incorrect answer will penalize your score/time by 10 seconds!</p>
-       
-    <div class="button-container" justified="center">
-        <button type="button" value="false" id="start-button">Start Quiz</button>
+<nav>
+    <div>
+        <section class="nav-flex-col4">
+            <div id="time">Time:<!--insert timer here--></div>
+        </section>
+        <section class="nav-flex-col4">
+            <div id="score">Score:<!--insert score here--></div>
+        </section>
     </div>
-    </div>
-    <!-- <div class="wrapper">
-        <header> -->
-            <!-- <nav>
-                <ul>
-                    <li>
-                        <a class="high-score">View High Scores</a>
-                    </li>
-                    <li>
-                        <a class="time">Time: insert dynamic time here using day.js</a>
-                    </li>
-                </ul>
-            </nav> -->
-          <!-- <h2>String values must be enclosed within________when being assigned to variables.</h2> -->
-        <!-- </header> -->
-    <!-- <div class="card">
-          <div class="card-header">
-    </div> -->
-        <div class="button-container">
-            <!-- <button id="button">1. Commas</button>
-            <button id="button">2. Curly Brackets</button>
-            <button id="button">3. Quotes</button>
-            <button id="button">4. Parenthesis</button> -->
+</nav>
+<main class="content-container">
+    <div class="body-flex-row">
+        <div class="quiz-home">
+            <h1 class="start-page-header">Coding Quiz Challenge</h1>
+            <p id="quiz-start">You must answer the following code-related quesitons within the time limit.  Please keep in mind that each incorrect answer will penalize your score/time by 10 seconds!</p>
+            <p id="quesitons"></p>
+            <button type="button" value="false" id="start-button">Start Quiz</button>
+        </div>
+        <div class="question-container">
+            <div id="question"></div>
+            <ul class="answer-buttons"></ul>
         </div>
     </div>
-    <div class="wrapper">
-        <!-- <header> -->
-          <!-- <h2>A very useful tool used during development and debugging for printing content to the debugger is:</h2> -->
-        <!-- </header> -->
-    <!-- <div class="card">
-          <div class="card-header">
-    </div> 
-        <div class="button-container">
-          <button id="button">1. JavaScript</button>
-            <button id="button">2. Terminal/Bash</button>
-            <button id="button">3. For Loops</button>
-            <button id="button">4. Console.log</button> -->
-        </div>
-    </div>
+ <section id="answer-feedback"></section>
+</main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
