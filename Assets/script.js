@@ -1,26 +1,21 @@
 // vars needed
 // var startBtn = document.getElementById('#start-button');
 
-let firstQuestion = 0;
+let xQuestion = 0;
 let startBtn = document.getElementById("start-button");
-let quizStart = $('#quiz-start');
-let startPageHeader = $('.start-page-header');
+let quizStart = document.getElementById('quiz-start');
+let startPageHeader = document.getElementById('start-page-header');
 // let answerBtn = $('.answer-buttons');
 // let question = $('.question');
 // answerBtn.val = false;
-let x = 0;
+// let x = 0;
 
-$(function startQuiz() {
-    $('#start-button').on('click', function () {
-
-
-        if ($('#start-button')) {
+function startQuiz() {
+        if (startBtn) {
             moveToQuestions();
+        }};
 
-        }
-    });
-});
-
+startBtn.addEventListener('click', moveToQuestions);
 
 var questionAnswerObjArr = [
     {
@@ -49,26 +44,26 @@ function moveToQuestions() {
     startPageHeader.remove();
 
     var questionContainerEl = $("#question-container-id");
-    var questionText = document.createElement('p');
+   
     var listOfAnswers = document.createElement('ol');
+    var questionText = document.createElement('p');
 
-    for (i = 0; i < questionAnswerObjArr[x].answers.length; i++) {
+    for (i = 0; i < questionAnswerObjArr[xQuestion].answers.length; i++) {
         var answerBtn = document.createElement('button');
-        answerBtn.textContent = questionAnswerObjArr[x].answers[i]
+        answerBtn.textContent = questionAnswerObjArr[xQuestion].answers[i];
+        questionText.textContent = questionAnswerObjArr[xQuestion].question;
 
         answerBtn.addEventListener('click', handleSelectedAnswer);
-
-        listOfAnswers.append(answerBtn)
+        
+        listOfAnswers.append(questionText);
+        listOfAnswers.append(answerBtn);
+        questionContainerEl.append(questionText);
+        questionContainerEl.append(listOfAnswers);
+       
     }
-    // answerBtn.textContent = questionAnswerObjArr.answers[0,1,2,3];    
-
-
-    // console.log(answerBtn.textContent);
-    questionContainerEl.append(questionText)
-    listOfAnswers.append(questionText)
-    questionContainerEl.append(listOfAnswers)
-    console.log(listOfAnswers)
-    console.log(answerBtn)
+  
+    
+   
 
 
 
@@ -88,13 +83,12 @@ function moveToQuestions() {
 
 }
 function handleSelectedAnswer() {
-    x++
+    xQuestion++
 
 }
-// }
-// console.log(quizQuestions);
+
 //need a loop through the the questions array that returns each question/answer object as dynamically created p for quesiton and buttons in list for answers. Then moves to the next question/answer object when a selection is made.
 
 
 
-// console.log(moveToQuestions);
+
