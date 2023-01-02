@@ -2,6 +2,7 @@ let xQuestion = 0;
 let startBtn = document.getElementById("start-button");
 let quizStart = document.getElementById('quiz-start');
 let startPageHeader = document.getElementById('start-page-header');
+var advanceQuestion;
 // let answerBtn = $('.answer-buttons');
 // let question = $('.question');
 // answerBtn.val = false;
@@ -40,25 +41,34 @@ function moveToQuestions() {
     quizStart.remove();
     startPageHeader.remove();
 
-    var questionContainerEl = $("#question-container-id");
+    var questionContainerEl = document.getElementById("question-container-id");
    
     var listOfAnswers = document.createElement('ol');
     var questionText = document.createElement('p');
 
+
+    //need a loop through the the questions array that returns each question/answer object as dynamically created p for quesiton and buttons in list for answers. Then moves to the next question/answer object when a selection is made.
     for (i = 0; i < questionAnswerObjArr[xQuestion].answers.length; i++) {
-        var answerBtn = document.createElement('button');
-        answerBtn.textContent = questionAnswerObjArr[xQuestion].answers[i];
+        advanceQuestion = document.createElement('button');
+        advanceQuestion.textContent = questionAnswerObjArr[xQuestion].answers[i];
         questionText.textContent = questionAnswerObjArr[xQuestion].question;
 
-        answerBtn.addEventListener('click', handleSelectedAnswer);
+        advanceQuestion.addEventListener('click', handleSelectedAnswer);
         
         listOfAnswers.append(questionText);
-        listOfAnswers.append(answerBtn);
+        listOfAnswers.append(advanceQuestion);
         questionContainerEl.append(questionText);
         questionContainerEl.append(listOfAnswers);
     }
+}
+function handleSelectedAnswer() {
+    xQuestion++
+    
+    moveToQuestions();
+}
 
-    // for (let i = 0; i <= questionAnswerObjArr.length; i++) {
+
+  // for (let i = 0; i <= questionAnswerObjArr.length; i++) {
     // console.log(quizQuestionObj1.answers[2]);
     // let answers = [i];
     //Make the answer button .val equal to the answer
@@ -71,15 +81,6 @@ function moveToQuestions() {
     // else {console.log('Right!');
 
     // }
-
-}
-function handleSelectedAnswer() {
-    xQuestion++
-
-}
-
-//need a loop through the the questions array that returns each question/answer object as dynamically created p for quesiton and buttons in list for answers. Then moves to the next question/answer object when a selection is made.
-
 
 
 
