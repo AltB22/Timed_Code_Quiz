@@ -2,10 +2,11 @@ let xQuestion = 0;
 let startBtn = document.getElementById("start-button");
 let quizStart = document.getElementById('quiz-start');
 let startPageHeader = document.getElementById('start-page-header');
-var advanceQuestion;
-// let answerBtn = $('.answer-buttons');
-// let question = $('.question');
-// answerBtn.val = false;
+let answerBtn; //answer buttons
+let currentQuestion; //question p
+let currentAnswers;
+
+
 
 
 function startQuiz() {
@@ -36,6 +37,8 @@ var questionAnswerObjArr = [
     },
 ]
 
+
+
 function moveToQuestions() {
     startBtn.remove();
     quizStart.remove();
@@ -44,26 +47,28 @@ function moveToQuestions() {
     var questionContainerEl = document.getElementById("question-container-id");
    
     var listOfAnswers = document.createElement('ol');
-    var questionText = document.createElement('p');
+    var questionText = document.createElement('p'); 
 
 
     //need a loop through the the questions array that returns each question/answer object as dynamically created p for quesiton and buttons in list for answers. Then moves to the next question/answer object when a selection is made.
     for (i = 0; i < questionAnswerObjArr[xQuestion].answers.length; i++) {
-        advanceQuestion = document.createElement('button');
-        advanceQuestion.textContent = questionAnswerObjArr[xQuestion].answers[i];
+        answerBtn = document.createElement('button');
+        answerBtn.textContent = questionAnswerObjArr[xQuestion].answers[i];
         questionText.textContent = questionAnswerObjArr[xQuestion].question;
-
-        advanceQuestion.addEventListener('click', handleSelectedAnswer);
+        currentQuestion = questionText;
+        currentAnswers = listOfAnswers;
+        answerBtn.addEventListener('click', handleSelectedAnswer);
         
-        listOfAnswers.append(questionText);
-        listOfAnswers.append(advanceQuestion);
+        listOfAnswers.append(answerBtn);
         questionContainerEl.append(questionText);
         questionContainerEl.append(listOfAnswers);
     }
 }
 function handleSelectedAnswer() {
+    currentAnswers.remove();
+    currentQuestion.remove();
     xQuestion++
-    
+
     moveToQuestions();
 }
 
