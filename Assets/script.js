@@ -70,20 +70,28 @@ function moveToQuestions() {
 
 // moves to the next question/answer object when a selection is made
 function handleSelectedAnswer() {
+    console.log(answerBtn.textContent)
+    if (answerBtn.textContent == questionAnswerObjArr[xQuestion].answer) {
+        console.log('Correct')
+        // selectedAnswer = answerBtn
+    }
+    answerFeedback();
+    xQuestion++
+    
     currentAnswers.remove();
     currentQuestion.remove();
-    xQuestion++
-    answerFeedback();
+    
     moveToQuestions();
 };
 
-
+// console.log(typeof(answerBtn))
 function answerFeedback(){
-    selectedAnswer = answerBtn.textContent
-    if (selectedAnswer){
-        // console.log('Correct')
-        console.log(selectedAnswer)
-    }
+   
+    // console.log(selectedAnswer)
+    // if (selectedAnswer == questionAnswerObjArr.answer){
+        
+        // console.log(selectedAnswer)
+    // }
    
 //     if (selectedAnswer == questionAnswerObjArr.answer){
 //     console.log(questionAnswerObjArr[xQuestion].answer)
