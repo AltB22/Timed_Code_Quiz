@@ -20,7 +20,12 @@ let xQuestion = 0;
 let timeOnClock = 60; //amount of time to start
 let timeEl = document.getElementById('time-id');//span to house ticking time
 timeEl.textContent = timeOnClock
-let timeInt = "";//time interval (1 sec or 1000ms)
+let timeInt = ""; //time interval (1 sec or 1000ms)
+let score = 0; //starting score
+let scoreEl = document.getElementById('score-id');//span element to house score
+// scoreEl.textContent = score //score to be displayed
+let scoreInt = 10; //Amount added to score for each correct answer
+
 
 let questionAnswerObjArr = [
     {
@@ -67,6 +72,42 @@ let questionAnswerObjArr = [
             'Frequent Flyers',
             'Global',],
         answer: 'Global',
+    },
+    {
+        question: 'An object data type can contain:',
+        answers: [
+            'An object',
+            'An array',
+            'A date',
+            'All of the Above',],
+        answer: 'All of the Above',
+    },
+    {
+        question: 'An object data type can contain:',
+        answers: [
+            'An object',
+            'An array',
+            'A date',
+            'All of the Above',],
+        answer: 'All of the Above',
+    },
+    {
+        question: 'An object data type can contain:',
+        answers: [
+            'An object',
+            'An array',
+            'A date',
+            'All of the Above',],
+        answer: 'All of the Above',
+    },
+    {
+        question: 'An object data type can contain:',
+        answers: [
+            'An object',
+            'An array',
+            'A date',
+            'All of the Above',],
+        answer: 'All of the Above',
     },
     {
         question: 'An object data type can contain:',
@@ -129,13 +170,20 @@ function moveToQuestions() {
    
 }
 
+
+
 // moves to the next question/answer object when a selection is made
 function handleSelectedAnswer() {
     // console.log(questionAnswerObjArr[xQuestion].answer)
     if (this.innerHTML == questionAnswerObjArr[xQuestion].answer) {
         answerResult.textContent = 'Correct!'
+        
+        score = (score + scoreInt)
+        scoreEl.innerHTML = (score + "%")
+        console.log(score)
+
      } else {
-        timeOnClock -=5;
+        timeOnClock -=10;
         if (timeOnClock < 0){
             timeOnClock = 0;
         }
