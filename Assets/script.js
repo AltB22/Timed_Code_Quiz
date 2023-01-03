@@ -1,3 +1,14 @@
+// GIVEN I am takina a code quiz
+// WHEN I click the start button
+// THEN a timer starts and I am presented with a question
+// WHEN I answer a question
+// THEN I am presented with another question
+// WHEN I answer a question incorrectly
+// THEN time is subtracted from the clock
+// WHEN all questions are answered or the timer reaches 0
+// THEN the game is over
+// WHEN the game is over
+// THEN I can save my initials and score
 let startBtn = document.getElementById("start-button");
 let quizStart = document.getElementById('quiz-start');
 let startPageHeader = document.getElementById('start-page-header');
@@ -6,7 +17,10 @@ let answerBtn ;//answer buttons
 let currentQuestion; //question p
 let currentAnswers;
 let xQuestion = 0;
-
+let timeOnClock = 60; //amount of time to start
+let timeEl = document.getElementById('time-id');//span to house ticking time
+timeEl.textContent = timeOnClock
+let timeInt = "";//time interval (1 sec or 1000ms)
 
 let questionAnswerObjArr = [
     {
@@ -65,20 +79,17 @@ let questionAnswerObjArr = [
     },
 ]
 
-let startTime = questionAnswerObjArr.length * 10; //amount of time to start
-let timeEl = document.getElementById('time-id');//span to house ticking time
-timeEl.textContent = startTime
-let timeInt = "";//time interval (1 sec or 1000ms)
+
 
 function startQuiz(){
     timeInt = setInterval(startClock,1000);
 
 }
 function startClock() {
-    startTime--;
-    timeEl.textContent = startTime;
+    timeOnClock--;
+    timeEl.textContent = timeOnClock;
     
-    if(startTime <= 0) {
+    if(timeOnClock <= 0) {
         endQuiz();
     }
 }
@@ -120,10 +131,14 @@ function moveToQuestions() {
 
 // moves to the next question/answer object when a selection is made
 function handleSelectedAnswer() {
-    console.log(questionAnswerObjArr[xQuestion].answer)
+    // console.log(questionAnswerObjArr[xQuestion].answer)
     if (this.innerHTML == questionAnswerObjArr[xQuestion].answer) {
         answerResult.textContent = 'Correct!'
      } else {
+        timeOnClock -=5;
+        if (timeOnClock < 0){
+            timeOnClock = 0;
+        }
         answerResult.textContent = ('Incorrect: The correct answer is ' + questionAnswerObjArr[xQuestion].answer)
      }
     currentAnswers.remove();
