@@ -6,8 +6,7 @@ let answerBtn ;//answer buttons
 let currentQuestion; //question p
 let currentAnswers;
 let xQuestion = 0;
-let timeEl = document.getElementById('time')
-let time;
+
 
 let questionAnswerObjArr = [
     {
@@ -55,27 +54,39 @@ let questionAnswerObjArr = [
             'Global',],
         answer: 'Global',
     },
+    {
+        question: 'An object data type can contain:',
+        answers: [
+            'An object',
+            'An array',
+            'A date',
+            'All of the Above',],
+        answer: 'All of the Above',
+    },
 ]
 
-let startTime = questionAnswerObjArr.length * 10
+let startTime = questionAnswerObjArr.length * 10; //amount of time to start
+let timeEl = document.getElementById('time-id');//span to house ticking time
+timeEl.textContent = startTime
+let timeInt = "";//time interval (1 sec or 1000ms)
 
-
-function startQuiz() {
-    if (startBtn) {
-        time = setInterval(startClock,1000);
-        timeEl.textContent = startTime;
-
-        console.log(timeEl)
-        moveToQuestions();
-    }};
-
-function startClock(){
-    time--;
+function startQuiz(){
+    timeInt = setInterval(startClock,1000);
 
 }
+function startClock() {
+    startTime--;
+    timeEl.textContent = startTime;
+    
+    if(startTime <= 0) {
+        endQuiz();
+    }
+}
 
-
-
+function endQuiz(){
+   
+    clearInterval(timeInt)
+}
 
 
 function moveToQuestions() {
@@ -113,15 +124,16 @@ function handleSelectedAnswer() {
     if (this.innerHTML == questionAnswerObjArr[xQuestion].answer) {
         answerResult.textContent = 'Correct!'
      } else {
-        answerResult.textContent = ('Incorrect: The correct answer is: ' + questionAnswerObjArr[xQuestion].answer)
+        answerResult.textContent = ('Incorrect: The correct answer is ' + questionAnswerObjArr[xQuestion].answer)
      }
     currentAnswers.remove();
     currentQuestion.remove();
     xQuestion++
     moveToQuestions();
+    
     }
       
 
-    startBtn.addEventListener('click', startQuiz);
-    startBtn.addEventListener('click', startClock);
+startBtn.addEventListener('click', startQuiz);
 startBtn.addEventListener('click', moveToQuestions);
+
