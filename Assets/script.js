@@ -2,11 +2,12 @@ let startBtn = document.getElementById("start-button");
 let quizStart = document.getElementById('quiz-start');
 let startPageHeader = document.getElementById('start-page-header');
 let answerResult = document.getElementById('answer-result')
-let answerBtn; //answer buttons
+let answerBtn ;//answer buttons
 let currentQuestion; //question p
 let currentAnswers;
 let xQuestion = 0;
-let selectedAnswer = '';
+let selectedAnswer = [];
+var timeOnClock;
 
 let questionAnswerObjArr = [
     {
@@ -51,43 +52,83 @@ function moveToQuestions() {
     
     // loops through the the questionsAnswerObjArr and returns each question/answer object as dynamically created p for question and buttons in list for answers
     for (i = 0; i < questionAnswerObjArr[xQuestion].answers.length; i++) {
+
         answerBtn = document.createElement('button');
         answerBtn.textContent = questionAnswerObjArr[xQuestion].answers[i];
-        
+        answerBtn.addEventListener('click', handleSelectedAnswer);
         questionText.textContent = questionAnswerObjArr[xQuestion].question;
         currentQuestion = questionText;
         currentAnswers = listOfAnswers;
-        answerBtn.addEventListener('click', handleSelectedAnswer);
         // answerBtn.addEventListener('click', answerFeedback)
         listOfAnswers.append(answerBtn);
         questionContainerEl.append(questionText);
         questionContainerEl.append(listOfAnswers);
 
-        
+     
     }
    
 }
 
 // moves to the next question/answer object when a selection is made
 function handleSelectedAnswer() {
-    console.log(answerBtn.textContent)
-    if (answerBtn.textContent == questionAnswerObjArr[xQuestion].answer) {
-        console.log('Correct')
-        // selectedAnswer = answerBtn
-    }
-    answerFeedback();
-    xQuestion++
-    
-    currentAnswers.remove();
-    currentQuestion.remove();
-    
-    moveToQuestions();
-};
+    // console.log(this)
+    if (this){
+        console.log(this)
+    if (this.innerHTML == questionAnswerObjArr[xQuestion].answer) {
 
-// console.log(typeof(answerBtn))
-function answerFeedback(){
+        // selectedAnswer = [answerBtn]
+        //  selectedAnswer.push(answerBtn)
+         console.log('Correct')
+     } else {
+        console.log('Incorrect')
+     }
+    }
+     currentAnswers.remove();
+     currentQuestion.remove();
+     xQuestion++
+     moveToQuestions();
+    //  answerFeedback();    
+        
+    
+    
+    }
+      
+
+
+
+       
+
    
-    // console.log(selectedAnswer)
+   
+
+
+
+
+    //    var answer = 
+    // if (input == questionAnswerObjArr[xQuestion].answer) {
+    //     console.log('correct')
+
+        // var x = [answerBtn]
+        // answerBtn.textContent = selectedAnswer
+        
+    // if (x == questionAnswerObjArr[xQuestion].answer) {
+    
+       
+    // }
+   
+// };
+// };
+// console.log(typeof(answerBtn))
+// function answerFeedback(){
+
+  
+
+    
+
+// };
+
+
+
     // if (selectedAnswer == questionAnswerObjArr.answer){
         
         // console.log(selectedAnswer)
@@ -96,7 +137,7 @@ function answerFeedback(){
 //     if (selectedAnswer == questionAnswerObjArr.answer){
 //     console.log(questionAnswerObjArr[xQuestion].answer)
 // }
-};
+
 
 
   // for (let i = 0; i <= questionAnswerObjArr.length; i++) {
