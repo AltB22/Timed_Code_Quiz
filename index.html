@@ -19,10 +19,16 @@
 <nav>
     <div>
         <section class="nav-flex-col4">
-            <div id="time">Time:<!--insert timer here--></div>
+            <div class="time">
+                <p>Time:</p>
+                    <span id="time"></span>
+            </div>
         </section>
         <section class="nav-flex-col4">
-            <div id="score">Score:<!--insert score here--></div>
+            <div class="score">
+                <p>Score:</p>
+                    <span id="score"></span>
+            </div>
         </section>
     </div>
 </nav>
@@ -34,10 +40,7 @@
             <p id="questions"></p>
             <button type="button" value="false" id="start-button">Start Quiz</button>
         </div>
-        <div id="question-container-id">
-            <!-- <div id="question"></div> -->
-            <!-- <ul class="answer-buttons"></ul> -->
-        </div>
+        <div id="question-container-id"></div>
     </div>
  <section id="answer-result"></section>
 </main>
@@ -45,9 +48,7 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
     crossorigin="anonymous"></script>
-        
-
-
+  
     <script src="./Assets/script.js"></script>
 </body>
 </html>

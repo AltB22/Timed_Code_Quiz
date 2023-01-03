@@ -6,63 +6,73 @@ let answerBtn ;//answer buttons
 let currentQuestion; //question p
 let currentAnswers;
 let xQuestion = 0;
-let selectedAnswer = [];
-var timeOnClock;
+let timeEl = document.getElementById('time')
+let time;
 
 let questionAnswerObjArr = [
     {
         question: 'String values must be enclosed within___________when being assigned to variables.',
         answers: [
-            '1. Commas',
-            '2. Curly Brackets',
-            '3. Quotes',
-            '4. Parentheses',],
-        answer: '3. Quotes',
+            'Commas',
+            'Curly Brackets',
+            'Quotes',
+            'Parentheses',],
+        answer: 'Quotes',
     },
     {
         question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
         answers: [
-            '1. JavaScript',
-            '2. Terminal / Bash',
-            '3. A For Loop',
-            '4. Console.log()',],
-        answer: '4. Console.log()',
+            'JavaScript',
+            'Terminal / Bash',
+            'A For Loop',
+            'Console.log()',],
+        answer: 'Console.log()',
     },
     {
         question: 'One proper syntax for declaring a function called "Do Stuff" in JavaScript is:',
         answers: [
-            '1. function doStuff()',
-            '2. function: do Stuff',
-            '3. doStuff',
-            '4. DOSTUFF!',],
-        answer: '1. function doStuff()',
+            'function doStuff()',
+            'function: do Stuff',
+            'doStuff',
+            'DOSTUFF!',],
+        answer: 'function doStuff()',
     },
     {
         question: 'JavaScript is written in a way that separates words by making the first letter of each word capital and not using spaces which is called:',
         answers: [
-            '1. DonkeyCase',
-            '2. CamelCase',
-            '3. FishCase',
-            '4. DogCase',],
-        answer: '2. CamelCase',
+            'donkeyCase',
+            'camelCase',
+            'fishCase',
+            'dogCase',],
+        answer: 'camelCase',
     },
     {
         question: 'Variables that can be accessed by any function are known as__________.',
         answers: [
-            '1. Worldly',
-            '2. Well Travelled',
-            '3. Frequent Flyers',
-            '4. Global',],
-        answer: '4. Global',
+            'Worldly',
+            'Well Traveled',
+            'Frequent Flyers',
+            'Global',],
+        answer: 'Global',
     },
 ]
 
-function startQuiz() {
-        if (startBtn) {
-            moveToQuestions();
-        }};
+let startTime = questionAnswerObjArr.length * 10
 
-startBtn.addEventListener('click', moveToQuestions);
+
+function startQuiz() {
+    if (startBtn) {
+        time = setInterval(startClock,1000);
+        timeEl.textContent = startTime;
+
+        console.log(timeEl)
+        moveToQuestions();
+    }};
+
+function startClock(){
+    time--;
+
+}
 
 
 
@@ -83,10 +93,11 @@ function moveToQuestions() {
         answerBtn = document.createElement('button');
         answerBtn.textContent = questionAnswerObjArr[xQuestion].answers[i];
         answerBtn.addEventListener('click', handleSelectedAnswer);
+       
         questionText.textContent = questionAnswerObjArr[xQuestion].question;
         currentQuestion = questionText;
         currentAnswers = listOfAnswers;
-        // answerBtn.addEventListener('click', answerFeedback)
+       
         listOfAnswers.append(answerBtn);
         questionContainerEl.append(questionText);
         questionContainerEl.append(listOfAnswers);
@@ -98,83 +109,19 @@ function moveToQuestions() {
 
 // moves to the next question/answer object when a selection is made
 function handleSelectedAnswer() {
+    console.log(questionAnswerObjArr[xQuestion].answer)
     if (this.innerHTML == questionAnswerObjArr[xQuestion].answer) {
-
-         console.log('Correct')
+        answerResult.textContent = 'Correct!'
      } else {
-        console.log('Incorrect')
+        answerResult.textContent = ('Incorrect: The correct answer is: ' + questionAnswerObjArr[xQuestion].answer)
      }
-    // }
-     currentAnswers.remove();
-     currentQuestion.remove();
-     xQuestion++
-     moveToQuestions();
-    //  answerFeedback();    
-        
-    
-    
+    currentAnswers.remove();
+    currentQuestion.remove();
+    xQuestion++
+    moveToQuestions();
     }
       
 
-
-
-       
-
-   
-   
-
-
-
-
-    //    var answer = 
-    // if (input == questionAnswerObjArr[xQuestion].answer) {
-    //     console.log('correct')
-
-        // var x = [answerBtn]
-        // answerBtn.textContent = selectedAnswer
-        
-    // if (x == questionAnswerObjArr[xQuestion].answer) {
-    
-       
-    // }
-   
-// };
-// };
-// console.log(typeof(answerBtn))
-// function answerFeedback(){
-
-  
-
-    
-
-// };
-
-
-
-    // if (selectedAnswer == questionAnswerObjArr.answer){
-        
-        // console.log(selectedAnswer)
-    // }
-   
-//     if (selectedAnswer == questionAnswerObjArr.answer){
-//     console.log(questionAnswerObjArr[xQuestion].answer)
-// }
-
-
-
-  // for (let i = 0; i <= questionAnswerObjArr.length; i++) {
-    // console.log(quizQuestionObj1.answers[2]);
-    // let answers = [i];
-    //Make the answer button .val equal to the answer
-    // answerBtn.index[i] = quizQuestionObj1.answer[i];
-    // console.log(answerBtn.index[i])
-    //     $('.answer-feedback').textContent = 'Wrong';
-    //     console.log(quizQuestionObj1.answer);
-    //     console.log('Wrong!');
-    // }
-    // else {console.log('Right!');
-
-    // }
-
-
-
+    startBtn.addEventListener('click', startQuiz);
+    startBtn.addEventListener('click', startClock);
+startBtn.addEventListener('click', moveToQuestions);
