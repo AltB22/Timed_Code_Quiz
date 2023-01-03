@@ -28,6 +28,33 @@ let questionAnswerObjArr = [
             '4. Console.log()',],
         answer: '4. Console.log()',
     },
+    {
+        question: 'One proper syntax for declaring a function called "Do Stuff" in JavaScript is:',
+        answers: [
+            '1. function doStuff()',
+            '2. function: do Stuff',
+            '3. doStuff',
+            '4. DOSTUFF!',],
+        answer: '1. function doStuff()',
+    },
+    {
+        question: 'JavaScript is written in a way that separates words by making the first letter of each word capital and not using spaces which is called:',
+        answers: [
+            '1. DonkeyCase',
+            '2. CamelCase',
+            '3. FishCase',
+            '4. DogCase',],
+        answer: '2. CamelCase',
+    },
+    {
+        question: 'Variables that can be accessed by any function are known as__________.',
+        answers: [
+            '1. Worldly',
+            '2. Well Travelled',
+            '3. Frequent Flyers',
+            '4. Global',],
+        answer: '4. Global',
+    },
 ]
 
 function startQuiz() {
@@ -71,18 +98,13 @@ function moveToQuestions() {
 
 // moves to the next question/answer object when a selection is made
 function handleSelectedAnswer() {
-    // console.log(this)
-    if (this){
-        console.log(this)
     if (this.innerHTML == questionAnswerObjArr[xQuestion].answer) {
 
-        // selectedAnswer = [answerBtn]
-        //  selectedAnswer.push(answerBtn)
          console.log('Correct')
      } else {
         console.log('Incorrect')
      }
-    }
+    // }
      currentAnswers.remove();
      currentQuestion.remove();
      xQuestion++
