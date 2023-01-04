@@ -9,7 +9,7 @@
 // THEN the game is over
 // WHEN the game is over
 // THEN I can save my initials and score
-let contentEl = document.querySelector(".content")
+let contentEl = document.querySelector(".content")//not currently used
 let startBtn = document.getElementById("start-button");
 let quizStart = document.getElementById('quiz-start');
 let startPageHeader = document.getElementById('start-page-header');
@@ -18,6 +18,7 @@ let answerBtn ;//answer buttons
 let currentQuestion; //question p
 let currentAnswers;
 let xQuestion = 0;
+
 let timeOnClock = 60; //amount of time to start
 let timeEl = document.getElementById('time-id');//span to house ticking time
 timeEl.textContent = timeOnClock
@@ -122,7 +123,7 @@ let questionAnswerObjArr = [
     },
 ]
 
-
+let questionQuant = questionAnswerObjArr.length;
 
 function startQuiz(){
     timeInt = setInterval(startClock,1000);
@@ -156,6 +157,10 @@ function moveToQuestions() {
     var listOfAnswers = document.createElement('ol');
     var questionText = document.createElement('p');
     
+    if (xQuestion === questionAnswerObjArr.length){
+        questionAnswerObjArr.answers = ["done"];
+     return endQuiz();
+    }
     // loops through the the questionsAnswerObjArr and returns each question/answer object as dynamically created p for question and buttons in list for answers
     for (i = 0; i < questionAnswerObjArr[xQuestion].answers.length; i++) {
 
@@ -170,6 +175,8 @@ function moveToQuestions() {
         listOfAnswers.append(answerBtn);
         questionContainerEl.append(questionText);
         questionContainerEl.append(listOfAnswers); 
+
+        
     }
 }
 
