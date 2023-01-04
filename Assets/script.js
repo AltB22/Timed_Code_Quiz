@@ -28,9 +28,11 @@ scoreEl.textContent = score + "%" //score to be displayed
 let scoreInt = 10; //Amount added to score for each correct answer
 let quizEnd = document.querySelector('.quiz-end'); //div class of "quiz-end"
 quizEnd.remove();
-// let userScore = [];
+
 let userInitials = document.getElementById('initials');
-let submitScore = document.getElementById("submit-button");
+userInitials = '';
+
+
 
 
 let questionAnswerObjArr = [
@@ -128,28 +130,53 @@ let questionAnswerObjArr = [
 
 function startQuiz(){
     timeInt = setInterval(startClock,1000);
-
+   
 }
 function startClock() {
     timeOnClock--;
     timeEl.textContent = timeOnClock;
     
     if(timeOnClock <= 0) {
-        endQuiz();
+        
+        return endQuiz();
     }
 }
 
 function endQuiz(){
+    
         clearInterval(timeInt);
         currentAnswers.remove();
         currentQuestion.remove();
         contentEl.append(quizEnd);
+        let submitScore = document.querySelector(".submit-button");
+        submitScore.addEventListener('click', saveScore);
+        localStorage.setItem('score',score)
+       
+        // console.log(score)
+        
+        
 }
 
-function saveScore() {
-    if (submitScore){
-    localStorage.setItem("initials", userInitials)
-}
+function saveScore(event) {
+    event.preventDefault();
+    let submitScore = document.querySelector(".submit-button");
+    submitScore.addEventListener('click',submitScore)
+    if (submitScore) {
+        quizEnd.remove();
+        let userScoreEl = document.querySelector('.user-scores');
+        let userScore = localStorage.getItem('score');
+        let userScoreId = document.getElementById('user-score-id');
+        userScoreEl.append(userScoreId);
+        userScoreId.textContent = userScore;
+
+        // contentEl.append(showScore)
+    }
+    console.log(score)
+    // var showScore = document.
+    
+    // userInitials = '';
+    
+
 }
 
 function moveToQuestions() {
