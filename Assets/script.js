@@ -18,7 +18,6 @@ let answerBtn ;//answer buttons
 let currentQuestion; //question p
 let currentAnswers;
 let xQuestion = 0;
-
 let timeOnClock = 60; //amount of time to start
 let timeEl = document.getElementById('time-id');//span to house ticking time
 timeEl.textContent = timeOnClock
@@ -27,8 +26,12 @@ let score = 0; //starting score
 let scoreEl = document.getElementById('score-id');//span element to house score
 scoreEl.textContent = score + "%" //score to be displayed
 let scoreInt = 10; //Amount added to score for each correct answer
-let quizEnd = document.querySelector('.quiz-end');
+let quizEnd = document.querySelector('.quiz-end'); //div class of "quiz-end"
 quizEnd.remove();
+// let userScore = [];
+let userInitials = document.getElementById('initials');
+let submitScore = document.getElementById("submit-button");
+
 
 let questionAnswerObjArr = [
     {
@@ -123,8 +126,6 @@ let questionAnswerObjArr = [
     },
 ]
 
-let questionQuant = questionAnswerObjArr.length;
-
 function startQuiz(){
     timeInt = setInterval(startClock,1000);
 
@@ -143,10 +144,13 @@ function endQuiz(){
         currentAnswers.remove();
         currentQuestion.remove();
         contentEl.append(quizEnd);
-
-
 }
 
+function saveScore() {
+    if (submitScore){
+    localStorage.setItem("initials", userInitials)
+}
+}
 
 function moveToQuestions() {
     startBtn.remove();
@@ -161,6 +165,7 @@ function moveToQuestions() {
         questionAnswerObjArr.answers = ["done"];
      return endQuiz();
     }
+
     // loops through the the questionsAnswerObjArr and returns each question/answer object as dynamically created p for question and buttons in list for answers
     for (i = 0; i < questionAnswerObjArr[xQuestion].answers.length; i++) {
 
@@ -175,16 +180,11 @@ function moveToQuestions() {
         listOfAnswers.append(answerBtn);
         questionContainerEl.append(questionText);
         questionContainerEl.append(listOfAnswers); 
-
-        
     }
 }
 
-
-
 // moves to the next question/answer object when a selection is made
 function handleSelectedAnswer() {
-    // console.log(questionAnswerObjArr[xQuestion].answer)
     if (this.innerHTML == questionAnswerObjArr[xQuestion].answer) {
         answerResult.textContent = 'Correct!'
         
@@ -204,7 +204,7 @@ function handleSelectedAnswer() {
     xQuestion++
     moveToQuestions();
     
-    }
+}
       
 
 startBtn.addEventListener('click', startQuiz);
