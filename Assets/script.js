@@ -20,7 +20,8 @@ let answerBtn ;//answer buttons
 let currentQuestion; //question p
 let currentAnswers;
 let xQuestion = 0;
-let timeOnClock = 60; //amount of time to start
+let timeOnClock; //amount of time to start
+timeOnClock = 60
 let timeEl = document.getElementById('time-id');//span to house ticking time
 timeEl.textContent = timeOnClock
 let timeInt = ""; //time interval (1 sec or 1000ms)
@@ -34,7 +35,8 @@ let userScoreEl = document.getElementById('high-scores');
 userScoreEl.remove();
 let scoresPage = document.querySelector(".scores-page");
 let userScores = document.querySelector("#user-score-id");
-
+var quizHome = document.createElement('button');
+quizHome.textContent = 'Home';
 
 
 let questionAnswerObjArr = [
@@ -132,9 +134,11 @@ let questionAnswerObjArr = [
 
 function startQuiz(){
     timeInt = setInterval(startClock,1000);
+    
 }
 
 function startClock() {
+    
     timeOnClock--;
     timeEl.textContent = timeOnClock;
     
@@ -153,19 +157,18 @@ function endQuiz(){
         let submitScore = document.querySelector(".submit-button");
         submitScore.addEventListener('click', saveScore);
         
+        
 }
 
 function saveScore(event) {
     event.preventDefault();
     
     let saveScore = document.querySelector(".submit-button");
-
+   
     if (saveScore) {
-        var quizHome = document.createElement('button');
-        quizHome.textContent = "Home"
-        quizHome.addEventListener('click',refreshQuiz)
-        var clearScores = document.createElement('button');
-        clearScores.textContent = "Clear Scores"
+       
+        // var clearScores = document.createElement('button');
+        // clearScores.textContent = "Clear Scores"
     
         var key = document.querySelector('#initials').value;
         localStorage.setItem(key,score)
@@ -196,17 +199,17 @@ function saveScore(event) {
 
             userScoreId.textContent = key + " " + score;
         })
-        scoresPage.append(quizHome, clearScores);
         
+        scoresPage.append(quizHome);
     }
 }
 
 function refreshQuiz() {
-    scoresPage.remove();
-    quizHomeEl.append(startBtn)
-    mainContent.append(quizHomeEl,startPageHeader,quizStart);
-    
-}
+   location.reload();
+        
+    }
+
+
 
 function moveToQuestions() {
     startBtn.remove();
@@ -260,7 +263,7 @@ function handleSelectedAnswer() {
     moveToQuestions();
 }
       
-
+quizHome.addEventListener('click',refreshQuiz);
 startBtn.addEventListener('click', startQuiz);
 startBtn.addEventListener('click', moveToQuestions);
 
