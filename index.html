@@ -40,22 +40,27 @@
             <p id="questions"></p>
             <button type="button" value="false" id="start-button">Start Quiz</button>
         </div>
-        <div id="question-container-id"></div> 
+        <section id="question-container-id"></section> 
+        <section id="answer-result"></section>
     </div>
 
-    <div class="content">
+    
         <div class="quiz-end">
         <h1 id="quiz-end-header">All Done!</h1>
             <p id="quiz-end">Enter your initials: </p>
-            <input id="initials"><form action="enter-initials"></form></input>
+            <input id="initials">
+            <form action="enter-initials"></form>
+        </input>
+            <br>
             <button type="button" class ="submit-button">Submit Score</button>
         </div>
-        <section id="answer-result"></section>
-        <div class="user-scores">
-            <p>Your Score:</p>
-                <span id="user-scores-id"></span>
+
+        <div class="scores-page">
+            <div id="user-scores">
+                <p>Your Score:</p>
+                <span id="user-score-id"></span>
+            </div>
         </div>
-</div>
 </main>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"

@@ -28,9 +28,13 @@ scoreEl.textContent = score + "%" //score to be displayed
 let scoreInt = 10; //Amount added to score for each correct answer
 let quizEnd = document.querySelector('.quiz-end'); //div class of "quiz-end"
 quizEnd.remove();
-
-let userInitials = document.getElementById('initials');
-userInitials = '';
+let userScoreEl = document.getElementById('user-scores');
+userScoreEl.remove();
+// let userInitials = 
+// userInitials = '';
+let scoresPage = document.querySelector(".scores-page");
+let userScores = document.querySelector(".user-scores");
+let key = document.getElementById('initials');
 
 
 
@@ -150,7 +154,7 @@ function endQuiz(){
         contentEl.append(quizEnd);
         let submitScore = document.querySelector(".submit-button");
         submitScore.addEventListener('click', saveScore);
-        localStorage.setItem('score',score)
+        localStorage.setItem('key',score)
        
         // console.log(score)
         
@@ -163,21 +167,20 @@ function saveScore(event) {
     submitScore.addEventListener('click',submitScore)
     if (submitScore) {
         quizEnd.remove();
-        let userScoreEl = document.querySelector('.user-scores');
-        let userScore = localStorage.getItem('score');
-        let userScoreId = document.getElementById('user-score-id');
-        userScoreEl.append(userScoreId);
-        userScoreId.textContent = userScore;
+        answerResult.remove();
+        let userScoreId = document.createElement('span');
+        userScoreId.setAttribute('id',"user-score-id")
 
-        // contentEl.append(showScore)
+        let userScore = JSON.parse(localStorage.getItem('key'));
+
+        scoresPage.append(userScoreEl);
+        userScoreEl.append(userScoreId)
+
+        userScoreId.textContent = userScore + '%';
     }
-    console.log(score)
-    // var showScore = document.
+   
     
-    // userInitials = '';
-    
-
-}
+  }
 
 function moveToQuestions() {
     startBtn.remove();
@@ -217,7 +220,7 @@ function handleSelectedAnswer() {
         
         score = (score + scoreInt)
         scoreEl.innerHTML = (score + "%")
-        console.log(score)
+        // console.log(score)
 
      } else {
         timeOnClock -=10;
