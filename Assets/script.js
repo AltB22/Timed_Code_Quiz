@@ -164,29 +164,33 @@ function saveScore(event) {
     if (submitScore) {
         
         var key = document.querySelector('#initials').value;
-        console.log(key)
         localStorage.setItem(key,score)
-        quizEnd.remove();
-        answerResult.remove();
+        
 
         Object.keys(localStorage).forEach((key) => {
-            var highScoresList = document.createElement('ol')
+            let userScoreId = document.createElement('span');
+            userScoreId.setAttribute('id',"user-score-id");
+            var highScoresList = document.createElement('ol');
             highScoresList.setAttribute('id', key);
-            var savedScoreLocal = document.createElement('li')
+            // highScoresList.setAttribute('class','score-list');
+            var savedScoreLocal = document.createElement('li');
+            savedScoreLocal.setAttribute('id','score-list');
             savedScoreLocal = JSON.parse(localStorage.getItem(key));
-            savedScoreLocal.textContent = highScoresList
+            savedScoreLocal.textContent = highScoresList;
             // var savedScore
             // savedScore.textContent = userInitials
-            highScoresList.append(savedScoreLocal)
+            highScoresList.append(savedScoreLocal);
+            scoresPage.append(userScoreEl);
+            userScoreEl.append(userScoreId);
+            quizEnd.remove();
+            answerResult.remove();
+            userScoreId.textContent = key + ' ' + score + '%';
+            console.log(savedScoreLocal)
         })
         
-        let userScoreId = document.createElement('span');
-        userScoreId.setAttribute('id',"user-score-id")
+       
 
-        scoresPage.append(userScoreEl);
-        userScoreEl.append(userScoreId)
-
-        userScoreId.textContent = score + '%';
+       
     }
 }
 
