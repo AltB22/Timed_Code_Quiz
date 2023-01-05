@@ -12,6 +12,7 @@ nav {
     justify-content:space-between;
     border-radius: 5px;
 }
+
 .content {
     display: flex;
     flex-direction: column;
@@ -30,28 +31,25 @@ h2 {
     font-weight: bold;
 }
 
-article {
+p {
+    /* color: rgb(30, 59, 59); */
     font-size: larger;
     text-align: center;
-    color: rgb(30, 59, 59); 
-
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-p {
-    font-size: larger;
-    text-align: center;
+section {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
     padding: 10px;
 }
 
 #answer-result {
     font-size: x-large;
     font-style: italic;
-}
-section {
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    padding: 10px;
 }
 
 button {
@@ -65,8 +63,12 @@ button {
     padding: 8px;
 }
 
-#user-score-id {
+#enter {
+    font-size: large;
+    color:rgb(30, 59, 59);
+}
 
+#user-score-id {
     font-size: large;
     color:rgb(30, 59, 59);
 }
