@@ -145,22 +145,17 @@ function endQuiz(){
         currentQuestion.remove();
     
         contentEl.append(quizEnd);
-    
-        // finalScore.innerHTML = ("Your Final Score is: " + score);
        
         let submitScore = document.querySelector(".submit-button");
         submitScore.addEventListener('click', saveScore);
-         // let key = document.getElementById('initials').value;
-        // var submitScore = document.querySelector(".submit-button");
+        
 }
 
 function saveScore(event) {
     event.preventDefault();
     
     let saveScore = document.querySelector(".submit-button");
-    // var finalScore = document.getElementById('final-score')
 
-   
     if (saveScore) {
         var quizHome = document.createElement('button');
         quizHome.textContent = "Try Again"
@@ -226,7 +221,6 @@ function handleSelectedAnswer() {
         
         score = (score + scoreInt)
         scoreEl.innerHTML = (score + "%")
-        // console.log(score)
 
      } else {
         timeOnClock -=10;
@@ -239,7 +233,6 @@ function handleSelectedAnswer() {
     currentQuestion.remove();
     xQuestion++
     moveToQuestions();
-    
 }
       
 
