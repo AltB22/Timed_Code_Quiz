@@ -168,24 +168,25 @@ function saveScore(event) {
         
 
         Object.keys(localStorage).forEach((key) => {
-            let userScoreId = document.createElement('span');
-            userScoreId.setAttribute('id',"user-score-id");
+         
             var highScoresList = document.createElement('ol');
             highScoresList.setAttribute('id', key);
             // highScoresList.setAttribute('class','score-list');
-            var savedScoreLocal = document.createElement('li');
-            savedScoreLocal.setAttribute('id','score-list');
-            savedScoreLocal = JSON.parse(localStorage.getItem(key));
-            savedScoreLocal.textContent = highScoresList;
-            // var savedScore
+            var savedScoreList = document.createElement('li');
+            savedScoreList.setAttribute('id','score-list');
+            savedScoreList = JSON.parse(localStorage.getItem(key));
+            let userScoreId = document.createElement('span');
+            userScoreId.setAttribute('id',"user-score-id");
+            // savedScoreLocal.textContent = highScoresList;
+            // var savedScore = localStorage.getItem(key)
             // savedScore.textContent = userInitials
-            highScoresList.append(savedScoreLocal);
+            highScoresList.append(savedScoreList);
             scoresPage.append(userScoreEl);
             userScoreEl.append(userScoreId);
             quizEnd.remove();
             answerResult.remove();
-            userScoreId.textContent = key + ' ' + score + '%';
-            console.log(savedScoreLocal)
+            userScoreId.textContent = key + ' ' + savedScoreList+ '%';
+            
         })
         
        
