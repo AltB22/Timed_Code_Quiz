@@ -30,10 +30,11 @@ h2 {
     font-weight: bold;
 }
 
-#score-list {
-    font-weight: bold;
-    background-color:  rgb(172, 20, 20);
-    color: white;
+article {
+    font-size: larger;
+    text-align: center;
+    color: rgb(30, 59, 59); 
+
 }
 
 p {
@@ -64,6 +65,11 @@ button {
     padding: 8px;
 }
 
+#user-score-id {
+
+    font-size: large;
+    color:rgb(30, 59, 59);
+}
 
 
 

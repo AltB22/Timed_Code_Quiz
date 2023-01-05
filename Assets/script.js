@@ -9,7 +9,7 @@
 // THEN the game is over
 // WHEN the game is over
 // THEN I can save my initials and score
-let contentEl = document.querySelector(".content")//not currently used
+let contentEl = document.querySelector(".content")
 let startBtn = document.getElementById("start-button");
 let quizStart = document.getElementById('quiz-start');
 let startPageHeader = document.getElementById('start-page-header');
@@ -23,8 +23,8 @@ let timeEl = document.getElementById('time-id');//span to house ticking time
 timeEl.textContent = timeOnClock
 let timeInt = ""; //time interval (1 sec or 1000ms)
 let score = 0; //starting score
-let scoreEl = document.getElementById('score-id');//span element to house score
-scoreEl.textContent = score + "%" //score to be displayed
+let scoreEl = document.querySelector('.user-score-class');//span element to house score
+scoreEl.textContent = score + "%"; //score to be displayed
 let scoreInt = 10; //Amount added to score for each correct answer
 let quizEnd = document.querySelector('.quiz-end'); //div class of "quiz-end"
 quizEnd.remove();
@@ -32,6 +32,10 @@ let userScoreEl = document.getElementById('user-scores');
 userScoreEl.remove();
 let scoresPage = document.querySelector(".scores-page");
 let userScores = document.querySelector(".user-scores");
+
+// finalScore.remove();
+
+
 
 // submitScore.textContent;
 
@@ -148,7 +152,11 @@ function endQuiz(){
         clearInterval(timeInt);
         currentAnswers.remove();
         currentQuestion.remove();
+    
         contentEl.append(quizEnd);
+    
+        // finalScore.innerHTML = ("Your Final Score is: " + score);
+       
         let submitScore = document.querySelector(".submit-button");
         submitScore.addEventListener('click', saveScore);
          // let key = document.getElementById('initials').value;
@@ -159,9 +167,12 @@ function saveScore(event) {
     event.preventDefault();
     
     let submitScore = document.querySelector(".submit-button");
-    
+    // var finalScore = document.getElementById('final-score')
+
    
     if (submitScore) {
+        var quizHome = document.createElement('button');
+        quizHome.textContent = "Try Again"
         
         var key = document.querySelector('#initials').value;
         localStorage.setItem(key,score)
@@ -171,40 +182,21 @@ function saveScore(event) {
          
             var highScoresList = document.createElement('ol');
             highScoresList.setAttribute('id', key);
-            // highScoresList.setAttribute('class','score-list');
+            highScoresList.setAttribute('class','score-list');
             var savedScoreList = document.createElement('li');
             savedScoreList.setAttribute('id','score-list');
             savedScoreList = JSON.parse(localStorage.getItem(key));
             let userScoreId = document.createElement('span');
             userScoreId.setAttribute('id',"user-score-id");
-            // savedScoreLocal.textContent = highScoresList;
-            // var savedScore = localStorage.getItem(key)
-            // savedScore.textContent = userInitials
             highScoresList.append(savedScoreList);
             scoresPage.append(userScoreEl);
             userScoreEl.append(userScoreId);
             quizEnd.remove();
             answerResult.remove();
-            userScoreId.textContent = key + ' ' + savedScoreList+ '%';
-            
+            userScoreId.textContent = key + ' ' + savedScoreList+ '%'
         })
-        
-       
-
-       
     }
 }
-
-
-
-
-
-   
-    // submitScore.addEventListener('click',submitScore)
-   
-   
-    
-//   }
 
 function moveToQuestions() {
     startBtn.remove();
