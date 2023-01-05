@@ -141,6 +141,8 @@ function startClock() {
     timeEl.textContent = timeOnClock;
     
     if(timeOnClock <= 0) {
+        // clearInterval(timeInt);
+        // timeOnClock = 0;
         
         return endQuiz();
     }
@@ -154,7 +156,7 @@ function endQuiz(){
         contentEl.append(quizEnd);
         let submitScore = document.querySelector(".submit-button");
         submitScore.addEventListener('click', saveScore);
-        localStorage.setItem('key',score)
+        
        
         // console.log(score)
         
@@ -165,6 +167,7 @@ function saveScore(event) {
     event.preventDefault();
     let submitScore = document.querySelector(".submit-button");
     submitScore.addEventListener('click',submitScore)
+    localStorage.setItem('key',score)
     if (submitScore) {
         quizEnd.remove();
         answerResult.remove();
