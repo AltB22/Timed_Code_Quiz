@@ -30,11 +30,10 @@ let quizEnd = document.querySelector('.quiz-end'); //div class of "quiz-end"
 quizEnd.remove();
 let userScoreEl = document.getElementById('user-scores');
 userScoreEl.remove();
-// let userInitials = 
-// userInitials = '';
 let scoresPage = document.querySelector(".scores-page");
 let userScores = document.querySelector(".user-scores");
 let key = document.getElementById('initials');
+// submitScore.textContent;
 
 
 
@@ -134,56 +133,72 @@ let questionAnswerObjArr = [
 
 function startQuiz(){
     timeInt = setInterval(startClock,1000);
-   
 }
+
 function startClock() {
     timeOnClock--;
     timeEl.textContent = timeOnClock;
     
     if(timeOnClock <= 0) {
-        // clearInterval(timeInt);
-        // timeOnClock = 0;
-        
         return endQuiz();
     }
 }
 
 function endQuiz(){
-    
         clearInterval(timeInt);
         currentAnswers.remove();
         currentQuestion.remove();
         contentEl.append(quizEnd);
+        
+        // let key = document.getElementById('initials').value;
+        // var submitScore = document.querySelector(".submit-button");
+        
+       
         let submitScore = document.querySelector(".submit-button");
         submitScore.addEventListener('click', saveScore);
         
-       
-        // console.log(score)
-        
-        
+        localStorage.setItem('key',score)
+    
 }
 
 function saveScore(event) {
     event.preventDefault();
     let submitScore = document.querySelector(".submit-button");
-    submitScore.addEventListener('click',submitScore)
-    localStorage.setItem('key',score)
     if (submitScore) {
         quizEnd.remove();
         answerResult.remove();
+
+        Object.keys(localStorage).forEach((key) => {
+            var highScoresList = document.createElement('ol')
+            highScoresList.setAttribute('id', key);
+            var userInitAndScore = document.createElement('li')
+            savedScoreLocal = JSON.parse(localStorage.getItem(key));
+            userInitAndScore.textContent = highScoresList
+            // var savedScore
+            // savedScore.textContent = userInitials
+            highScoresList.append(userInitAndScore)
+        })
+        
         let userScoreId = document.createElement('span');
         userScoreId.setAttribute('id',"user-score-id")
-
-        let userScore = JSON.parse(localStorage.getItem('key'));
 
         scoresPage.append(userScoreEl);
         userScoreEl.append(userScoreId)
 
-        userScoreId.textContent = userScore + '%';
+        userScoreId.textContent = score + '%';
     }
+}
+
+
+
+
+
+   
+    // submitScore.addEventListener('click',submitScore)
+   
    
     
-  }
+//   }
 
 function moveToQuestions() {
     startBtn.remove();
