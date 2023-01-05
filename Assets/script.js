@@ -32,7 +32,7 @@ let userScoreEl = document.getElementById('user-scores');
 userScoreEl.remove();
 let scoresPage = document.querySelector(".scores-page");
 let userScores = document.querySelector(".user-scores");
-let key = document.getElementById('initials');
+
 // submitScore.textContent;
 
 
@@ -149,34 +149,35 @@ function endQuiz(){
         currentAnswers.remove();
         currentQuestion.remove();
         contentEl.append(quizEnd);
-        
-        // let key = document.getElementById('initials').value;
-        // var submitScore = document.querySelector(".submit-button");
-        
-       
         let submitScore = document.querySelector(".submit-button");
         submitScore.addEventListener('click', saveScore);
-        
-        localStorage.setItem('key',score)
-    
+         // let key = document.getElementById('initials').value;
+        // var submitScore = document.querySelector(".submit-button");
 }
 
 function saveScore(event) {
     event.preventDefault();
+    
     let submitScore = document.querySelector(".submit-button");
+    
+   
     if (submitScore) {
+        
+        var key = document.querySelector('#initials').value;
+        console.log(key)
+        localStorage.setItem(key,score)
         quizEnd.remove();
         answerResult.remove();
 
         Object.keys(localStorage).forEach((key) => {
             var highScoresList = document.createElement('ol')
             highScoresList.setAttribute('id', key);
-            var userInitAndScore = document.createElement('li')
+            var savedScoreLocal = document.createElement('li')
             savedScoreLocal = JSON.parse(localStorage.getItem(key));
-            userInitAndScore.textContent = highScoresList
+            savedScoreLocal.textContent = highScoresList
             // var savedScore
             // savedScore.textContent = userInitials
-            highScoresList.append(userInitAndScore)
+            highScoresList.append(savedScoreLocal)
         })
         
         let userScoreId = document.createElement('span');
