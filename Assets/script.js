@@ -33,15 +33,6 @@ userScoreEl.remove();
 let scoresPage = document.querySelector(".scores-page");
 let userScores = document.querySelector(".user-scores");
 
-// finalScore.remove();
-
-
-
-// submitScore.textContent;
-
-
-
-
 let questionAnswerObjArr = [
     {
         question: 'String values must be enclosed within___________when being assigned to variables.',
@@ -166,17 +157,16 @@ function endQuiz(){
 function saveScore(event) {
     event.preventDefault();
     
-    let submitScore = document.querySelector(".submit-button");
+    let saveScore = document.querySelector(".submit-button");
     // var finalScore = document.getElementById('final-score')
 
    
-    if (submitScore) {
+    if (saveScore) {
         var quizHome = document.createElement('button');
         quizHome.textContent = "Try Again"
-        
+
         var key = document.querySelector('#initials').value;
         localStorage.setItem(key,score)
-        
 
         Object.keys(localStorage).forEach((key) => {
          
