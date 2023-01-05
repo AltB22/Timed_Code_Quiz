@@ -9,9 +9,11 @@
 // THEN the game is over
 // WHEN the game is over
 // THEN I can save my initials and score
-let contentEl = document.querySelector(".content")
-let startBtn = document.getElementById("start-button");
+let mainContent = document.querySelector('.content-container')
+let contentEl = document.querySelector(".content") //class of content for the major content section elements
+let startBtn = document.getElementById("start-button"); //
 let quizStart = document.getElementById('quiz-start');
+let quizHomeEl = document.querySelector('.quiz-home')
 let startPageHeader = document.getElementById('start-page-header');
 let answerResult = document.getElementById('answer-result')
 let answerBtn ;//answer buttons
@@ -28,10 +30,12 @@ scoreEl.textContent = score + "%"; //score to be displayed
 let scoreInt = 10; //Amount added to score for each correct answer
 let quizEnd = document.querySelector('.quiz-end'); //div class of "quiz-end"
 quizEnd.remove();
-let userScoreEl = document.getElementById('user-scores');
+let userScoreEl = document.getElementById('high-scores');
 userScoreEl.remove();
 let scoresPage = document.querySelector(".scores-page");
-let userScores = document.querySelector(".user-scores");
+let userScores = document.querySelector("#user-score-id");
+
+
 
 let questionAnswerObjArr = [
     {
@@ -79,51 +83,51 @@ let questionAnswerObjArr = [
             'Global',],
         answer: 'Global',
     },
-    {
-        question: 'An object data type can contain:',
-        answers: [
-            'An object',
-            'An array',
-            'A date',
-            'All of the Above',],
-        answer: 'All of the Above',
-    },
-    {
-        question: 'An object data type can contain:',
-        answers: [
-            'An object',
-            'An array',
-            'A date',
-            'All of the Above',],
-        answer: 'All of the Above',
-    },
-    {
-        question: 'An object data type can contain:',
-        answers: [
-            'An object',
-            'An array',
-            'A date',
-            'All of the Above',],
-        answer: 'All of the Above',
-    },
-    {
-        question: 'An object data type can contain:',
-        answers: [
-            'An object',
-            'An array',
-            'A date',
-            'All of the Above',],
-        answer: 'All of the Above',
-    },
-    {
-        question: 'An object data type can contain:',
-        answers: [
-            'An object',
-            'An array',
-            'A date',
-            'All of the Above',],
-        answer: 'All of the Above',
-    },
+    // {
+    //     question: 'An object data type can contain:',
+    //     answers: [
+    //         'An object',
+    //         'An array',
+    //         'A date',
+    //         'All of the Above',],
+    //     answer: 'All of the Above',
+    // },
+    // {
+    //     question: 'An object data type can contain:',
+    //     answers: [
+    //         'An object',
+    //         'An array',
+    //         'A date',
+    //         'All of the Above',],
+    //     answer: 'All of the Above',
+    // },
+    // {
+    //     question: 'An object data type can contain:',
+    //     answers: [
+    //         'An object',
+    //         'An array',
+    //         'A date',
+    //         'All of the Above',],
+    //     answer: 'All of the Above',
+    // },
+    // {
+    //     question: 'An object data type can contain:',
+    //     answers: [
+    //         'An object',
+    //         'An array',
+    //         'A date',
+    //         'All of the Above',],
+    //     answer: 'All of the Above',
+    // },
+    // {
+    //     question: 'An object data type can contain:',
+    //     answers: [
+    //         'An object',
+    //         'An array',
+    //         'A date',
+    //         'All of the Above',],
+    //     answer: 'All of the Above',
+    // },
 ]
 
 function startQuiz(){
@@ -158,29 +162,50 @@ function saveScore(event) {
 
     if (saveScore) {
         var quizHome = document.createElement('button');
-        quizHome.textContent = "Try Again"
-
+        quizHome.textContent = "Home"
+        quizHome.addEventListener('click',refreshQuiz)
+        var clearScores = document.createElement('button');
+        clearScores.textContent = "Clear Scores"
+    
         var key = document.querySelector('#initials').value;
         localStorage.setItem(key,score)
 
+        var HighScoreText = document.createElement('h2');
+        HighScoreText.textContent = 'High Scores:'
+        scoresPage.append(HighScoreText);
+
         Object.keys(localStorage).forEach((key) => {
-         
             var highScoresList = document.createElement('ol');
-            highScoresList.setAttribute('id', key);
+
+            var insertBreak = document.createElement('br');
+            highScoresList.setAttribute('id',key);
             highScoresList.setAttribute('class','score-list');
+        
             var savedScoreList = document.createElement('li');
             savedScoreList.setAttribute('id','score-list');
             savedScoreList = JSON.parse(localStorage.getItem(key));
-            let userScoreId = document.createElement('span');
-            userScoreId.setAttribute('id',"user-score-id");
+
+            var userScoreId = document.createElement('span');
+            userScoreId.setAttribute('id','user-score-id')
+
             highScoresList.append(savedScoreList);
             scoresPage.append(userScoreEl);
-            userScoreEl.append(userScoreId);
+            userScoreEl.append(userScoreId,insertBreak);
             quizEnd.remove();
             answerResult.remove();
-            userScoreId.textContent = key + ' ' + savedScoreList+ '%'
+
+            userScoreId.textContent = key + " " + score;
         })
+        scoresPage.append(quizHome, clearScores);
+        
     }
+}
+
+function refreshQuiz() {
+    scoresPage.remove();
+    quizHomeEl.append(startBtn)
+    mainContent.append(quizHomeEl,startPageHeader,quizStart);
+    
 }
 
 function moveToQuestions() {
